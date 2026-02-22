@@ -2,9 +2,36 @@
 <html>
 <head>
   <title>Natyam Transcribe</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body style="text-align:center; font-family:Arial; margin-top:100px;">
-  <h1>Welcome to Natyam Transcribe 💃</h1>
-  <p>Real-time Bharatanatyam Transcription using AI</p>
+<body class="relative min-h-screen flex items-center justify-center bg-black text-white">
+
+  <!-- Background -->
+  <div class="absolute inset-0 bg-cover bg-center"
+       style="background-image: url('hero-bg.jpg'); opacity:0.6;">
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 text-center px-4">
+
+    <img src="bharatnatyam-logo.png"
+         class="w-40 h-40 mx-auto rounded-full shadow-lg">
+
+    <h1 class="mt-8 text-5xl font-bold text-yellow-400">
+      Natyam Transcribe
+    </h1>
+
+    <p class="mt-4 text-lg text-gray-300 max-w-lg mx-auto">
+      Real-time transcription of Bharatanatyam — decode mudras, adavus & expressions with precision
+    </p>
+
+    <a href="transcribe.html">
+      <button class="mt-8 px-8 py-3 bg-yellow-500 text-black rounded-lg hover:scale-105 transition">
+        Get Started
+      </button>
+    </a>
+
+  </div>
+
 </body>
 </html>

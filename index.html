@@ -9,12 +9,11 @@
 <style>
   body { font-family: 'Playfair Display', serif; }
 
-  /* Animations */
+  /* Fade in up animations */
   @keyframes fadeInUp {
     0% { opacity: 0; transform: translateY(20px); }
     100% { opacity: 1; transform: translateY(0); }
   }
-
   .animate-fade-in-up { animation: fadeInUp 1s forwards; }
   .animate-fade-in-up-delay { animation: fadeInUp 1s forwards 0.5s; }
   .animate-fade-in-up-delay-2 { animation: fadeInUp 1s forwards 1s; }
@@ -22,30 +21,30 @@
 
   /* Slow pulsing for logo glow */
   @keyframes pulseSlow {
-    0%, 100% { transform: scale(1); opacity: 0.7; }
+    0%,100% { transform: scale(1); opacity: 0.7; }
     50% { transform: scale(1.05); opacity: 1; }
   }
-
   .animate-pulse-slow { animation: pulseSlow 3s infinite; }
 
-  /* Glow for logo */
+  /* Glow ring around logo */
   .glow-ring {
-    box-shadow: 0 0 30px 10px rgba(255, 223, 0, 0.4);
+    box-shadow: 0 0 30px 10px rgba(255,223,0,0.4);
     border-radius: 9999px;
   }
 </style>
 </head>
+
 <body class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black text-yellow-400">
 
 <!-- Background -->
 <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('hero-bg.jpg');"></div>
 <div class="absolute inset-0 bg-gradient-to-b from-[#2b0006]/70 via-[#4a000d]/70 to-black/80"></div>
 
-<!-- Content -->
+<!-- Main Content -->
 <div class="relative z-10 flex flex-col items-center px-4 text-center">
 
   <!-- Logo -->
-  <div class="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden shadow-lg hover:scale-110 transition-transform duration-500 animate-fade-in-up">
+  <div class="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden shadow-lg hover:scale-110 transition-transform duration-500 animate-fade-in-up relative">
     <img src="bharatnatyam-logo.png" alt="Bharatanatyam Logo" class="w-full h-full rounded-full object-cover animate-pulse-slow">
     <div class="absolute inset-0 glow-ring animate-pulse-slow"></div>
   </div>
@@ -61,9 +60,12 @@
   </p>
 
   <!-- CTA Button -->
-  <a href="transcribe.html" class="mt-10 px-10 py-4 rounded-lg bg-yellow-500 text-black font-display text-lg tracking-widest uppercase border border-yellow-400/40 shadow-lg hover:scale-105 hover:shadow-[0_0_40px_hsl(40_75%_55%/0.3)] transition-all duration-300 ease-out opacity-0 animate-fade-in-up-delay-3">
+  <a href="transcribe.html" class="mt-10 px-10 py-4 rounded-lg bg-yellow-500 text-black font-display text-lg tracking-widest uppercase
+      border border-yellow-400/40 shadow-lg hover:scale-105 hover:shadow-[0_0_40px_hsl(40_75%_55%/0.3)]
+      transition-all duration-300 ease-out opacity-0 animate-fade-in-up-delay-3">
     Get Started
   </a>
+
 </div>
 
 <!-- Bottom Decorative Line -->

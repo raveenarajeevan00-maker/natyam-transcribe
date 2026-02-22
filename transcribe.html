@@ -20,63 +20,48 @@
 bg-gradient-to-b from-[#3b0008] via-[#5c000f] to-black text-yellow-400 px-6">
 
   <!-- Title -->
-  <h1 class="text-5xl md:text-7xl font-bold text-center mb-8">
-    Live Transcription
+  <h1 class="text-5xl md:text-7xl font-bold text-center mb-10">
+    Upload Performance
   </h1>
 
-  <!-- Camera -->
-  <video id="video" autoplay playsinline 
-    class="w-full max-w-2xl rounded-xl shadow-2xl mb-6 border-4 border-yellow-500">
+  <!-- Upload Input -->
+  <input type="file" accept="video/*" id="videoUpload"
+    class="mb-6 text-white text-lg">
+
+  <!-- Main Button -->
+  <button onclick="handleUpload()" 
+    class="px-14 py-4 bg-yellow-500 text-black rounded-xl text-lg 
+    hover:scale-105 hover:bg-yellow-400 transition duration-300 shadow-xl mb-10">
+    Upload & Transcribe
+  </button>
+
+  <!-- Video Preview -->
+  <video id="videoPreview" controls 
+    class="hidden w-full max-w-2xl rounded-xl shadow-2xl border-4 border-yellow-500 mb-6">
   </video>
 
-  <!-- Buttons -->
-  <div class="flex flex-col md:flex-row gap-6 mb-8">
-
-    <button onclick="startCamera()" 
-      class="px-10 py-4 bg-yellow-500 text-black rounded-xl text-lg 
-      hover:scale-110 hover:bg-yellow-400 transition duration-300 shadow-xl">
-      START CAMERA
-    </button>
-
-    <label class="px-10 py-4 bg-yellow-500 text-black rounded-xl text-lg 
-      hover:scale-110 hover:bg-yellow-400 transition duration-300 shadow-xl cursor-pointer text-center">
-      UPLOAD VIDEO
-      <input type="file" accept="video/*" id="videoUpload" hidden>
-    </label>
-
-  </div>
-
-  <!-- Uploaded Video -->
-  <video id="uploadedVideo" controls 
-    class="w-full max-w-2xl rounded-xl shadow-2xl mb-6 border-4 border-yellow-500">
-  </video>
-
-  <!-- Output -->
-  <div class="text-xl text-gray-300 text-center max-w-2xl">
-    <p id="output">Waiting for input...</p>
-  </div>
+  <!-- Output Text -->
+  <p id="output" class="text-xl text-gray-300 text-center max-w-2xl">
+  </p>
 
 <script>
-  function startCamera() {
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then(stream => {
-        document.getElementById('video').srcObject = stream;
-        document.getElementById('output').innerText =
-          "Detecting Mudra... Adavu identified: Tatta Adavu";
-      })
-      .catch(error => {
-        alert("Camera access denied!");
-      });
-  }
+  function handleUpload() {
+    const fileInput = document.getElementById("videoUpload");
+    const file = fileInput.files[0];
 
-  document.getElementById('videoUpload').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    if (!file) return;
+    if (!file) {
+      alert("Please select a video first.");
+      return;
+    }
+
     const videoURL = URL.createObjectURL(file);
-    document.getElementById('uploadedVideo').src = videoURL;
-    document.getElementById('output').innerText =
-      "Analyzing uploaded performance... Mudra detected: Alapadma";
-  });
+    const video = document.getElementById("videoPreview");
+    video.src = videoURL;
+    video.classList.remove("hidden");
+
+    document.getElementById("output").innerText =
+      "Analyzing performance... Mudra detected: Alapadma | Adavu: Tatta Adavu";
+  }
 </script>
 
 </body>

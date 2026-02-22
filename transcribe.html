@@ -1,43 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Transcribe</title>
+  <meta charset="UTF-8">
+  <title>Transcribe - Natyam</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center bg-black text-white">
 
-  <h1 class="text-4xl font-bold mb-6">Upload Performance</h1>
+<body class="min-h-screen bg-gradient-to-b from-[#3b0008] via-[#5c000f] to-black 
+text-yellow-400 flex flex-col items-center p-6">
 
-  <input type="file" id="videoInput" class="mb-4">
+  <h1 class="text-4xl md:text-5xl font-bold mb-8 text-center">
+    Live Transcription
+  </h1>
 
-  <button onclick="uploadVideo()"
-    class="px-6 py-3 bg-yellow-500 text-black rounded">
-    Upload & Transcribe
-  </button>
+  <!-- Camera Section -->
+  <div class="bg-black bg-opacity-40 p-6 rounded-xl shadow-2xl w-full max-w-3xl mb-8">
+    <h2 class="text-2xl mb-4">🎥 Live Camera</h2>
+    <video id="video" autoplay playsinline class="w-full rounded-lg mb-4"></video>
+    <button onclick="startCamera()" 
+      class="px-6 py-2 bg-yellow-500 text-black rounded-lg hover:bg-yellow-400 transition">
+      Start Camera
+    </button>
+  </div>
 
-  <p id="result" class="mt-6"></p>
+  <!-- Upload Section -->
+  <div class="bg-black bg-opacity-40 p-6 rounded-xl shadow-2xl w-full max-w-3xl mb-8">
+    <h2 class="text-2xl mb-4">📂 Upload Dance Video</h2>
+    <input type="file" accept="video/*" id="videoUpload"
+      class="mb-4 text-white">
+    <video id="uploadedVideo" controls class="w-full rounded-lg"></video>
+  </div>
+
+  <!-- Fake AI Output -->
+  <div class="bg-black bg-opacity-40 p-6 rounded-xl shadow-2xl w-full max-w-3xl">
+    <h2 class="text-2xl mb-4">🧠 Transcription Output</h2>
+    <div id="output" class="text-gray-300">
+      Waiting for input...
+    </div>
+  </div>
 
 <script>
-async function uploadVideo() {
-  const fileInput = document.getElementById("videoInput");
-  const result = document.getElementById("result");
-
-  if (!fileInput.files.length) {
-    alert("Upload a video first!");
-    return;
+  // Start Camera
+  function startCamera() {
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        document.getElementById('video').srcObject = stream;
+        document.getElementById('output').innerText =
+          "Detecting Mudra... Adavu identified: Tatta Adavu";
+      })
+      .catch(error => {
+        alert("Camera access denied!");
+      });
   }
 
-  const formData = new FormData();
-  formData.append("video", fileInput.files[0]);
-
-  const response = await fetch("http://127.0.0.1:5000/process", {
-    method: "POST",
-    body: formData
+  // Video Upload Preview
+  document.getElementById('videoUpload').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const videoURL = URL.createObjectURL(file);
+    document.getElementById('uploadedVideo').src = videoURL;
+    document.getElementById('output').innerText =
+      "Analyzing uploaded performance... Mudra detected: Alapadma";
   });
-
-  const data = await response.json();
-  result.innerText = data.transcription;
-}
 </script>
 
 </body>

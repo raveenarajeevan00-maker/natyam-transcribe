@@ -5,41 +5,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Natyam Transcribe</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
-
 <style>
-  body {
+  * {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 
-  /* Smooth fade */
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  body, html {
+    height: 100%;
   }
 
-  .fade-in {
-    animation: fadeIn 1.5s ease-in-out;
+  /* Full background image exactly as uploaded */
+  .hero {
+    width: 100%;
+    height: 100vh;
+    background: url('hero-bg.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+  }
+
+  /* Invisible clickable button area */
+  .button-link {
+    position: absolute;
+    bottom: 22%;   /* Adjust if needed */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;  /* Adjust width to match button */
+    height: 70px;  /* Adjust height to match button */
+    cursor: pointer;
   }
 </style>
 </head>
 
-<body class="relative min-h-screen flex items-center justify-center overflow-hidden fade-in">
+<body>
 
-  <!-- Full Background Screenshot -->
-  <div class="absolute inset-0 bg-cover bg-center"
-       style="background-image: url('hero-bg.png');">
-  </div>
-
-  <!-- Button -->
-  <div class="relative z-10 flex items-center justify-center mt-64 md:mt-72">
-    <a href="transcribe.html"
-       class="px-12 py-4 rounded-xl bg-yellow-500 text-black text-lg tracking-widest uppercase
-              hover:scale-105 hover:bg-yellow-400
-              transition duration-300 shadow-xl">
-      Get Started
-    </a>
-  </div>
+<div class="hero">
+  <a href="transcribe.html" class="button-link"></a>
+</div>
 
 </body>
 </html>

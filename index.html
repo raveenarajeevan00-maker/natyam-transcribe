@@ -7,75 +7,70 @@
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
   body {
-    font-family: 'Inter', sans-serif;
-  }
-
-  .font-display {
     font-family: 'Playfair Display', serif;
   }
 
   /* Fade animation */
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(40px); }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .fade-1 { animation: fadeInUp 1s ease forwards; opacity: 0; }
-  .fade-2 { animation: fadeInUp 1s ease forwards 0.5s; opacity: 0; }
-  .fade-3 { animation: fadeInUp 1s ease forwards 1s; opacity: 0; }
+  .fade-1 { animation: fadeIn 1s ease forwards; opacity: 0; }
+  .fade-2 { animation: fadeIn 1s ease forwards 0.5s; opacity: 0; }
+  .fade-3 { animation: fadeIn 1s ease forwards 1s; opacity: 0; }
 
-  /* Gold text gradient */
-  .text-gradient-gold {
+  /* Gold gradient text */
+  .gold-text {
     background: linear-gradient(to right, #facc15, #f59e0b, #facc15);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  /* Gold glow */
-  .shadow-gold {
-    box-shadow: 0 0 30px rgba(255, 200, 0, 0.4);
+  /* Logo glow */
+  .logo-glow {
+    box-shadow: 0 0 60px rgba(255, 200, 0, 0.4);
   }
 </style>
 </head>
 
 <body class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
 
-  <!-- Background Image (Uses your background.jpeg) -->
-  <div class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+  <!-- Background -->
+  <div class="absolute inset-0 bg-cover bg-center"
        style="background-image: url('background.jpeg');">
   </div>
 
-  <!-- Dark Maroon Overlay -->
-  <div class="absolute inset-0 bg-black/60"></div>
+  <!-- Dark overlay -->
+  <div class="absolute inset-0 bg-[#4b0000]/80"></div>
 
   <!-- Content -->
-  <div class="relative z-10 flex flex-col items-center px-4">
+  <div class="relative z-10 px-6">
 
-    <!-- Logo (Uses your logo.png) -->
+    <!-- Logo -->
     <img src="logo.png"
          alt="Bharatanatyam Logo"
-         class="w-40 h-40 md:w-56 md:h-56 rounded-full shadow-gold object-cover fade-1">
+         class="w-44 h-44 md:w-56 md:h-56 rounded-full mx-auto logo-glow fade-1">
 
     <!-- Title -->
-    <h1 class="mt-8 text-4xl md:text-6xl lg:text-7xl font-display font-bold text-gradient-gold tracking-wide fade-2">
-      Natyam Transcribe
+    <h1 class="mt-10 text-5xl md:text-7xl font-bold tracking-wide gold-text fade-2">
+      NATYAM TRANSCRIBE
     </h1>
 
     <!-- Subtitle -->
-    <p class="mt-4 text-lg md:text-xl text-white/80 max-w-xl fade-3">
-      Real-time transcription of Bharatanatyam — decode mudras, adavus & expressions with precision
+    <p class="mt-6 text-lg md:text-xl text-gray-200 max-w-2xl mx-auto fade-3">
+      Real-time transcription of Bharatanatyam — decode mudras,
+      adavus & expressions with precision
     </p>
 
     <!-- Button -->
     <a href="transcribe.html"
-       class="mt-10 px-10 py-4 rounded-lg bg-yellow-500 text-black font-display text-lg tracking-widest uppercase
-              border border-yellow-300 shadow-gold
-              hover:scale-105 hover:shadow-[0_0_40px_rgba(255,200,0,0.6)]
-              transition-all duration-300 ease-out fade-3">
+       class="inline-block mt-10 px-12 py-4 rounded-xl bg-yellow-500 text-black text-lg tracking-widest uppercase
+              hover:scale-105 transition duration-300 shadow-xl fade-3">
       Get Started
     </a>
 

@@ -12,29 +12,42 @@
     box-sizing: border-box;
   }
 
-  body, html {
+  html, body {
     height: 100%;
+    width: 100%;
+    overflow: hidden;
   }
 
-  /* Full background image exactly as uploaded */
+  /* Show full image without cutting borders */
   .hero {
     width: 100%;
     height: 100vh;
     background: url('hero-bg.png') no-repeat center center;
-    background-size: cover;
+    background-size: contain;   /* IMPORTANT - shows full borders */
+    background-color: #5a0000;  /* Fills empty space nicely */
     position: relative;
   }
 
-  /* Invisible clickable button area */
+  /* Invisible clickable area aligned to button */
   .button-link {
     position: absolute;
-    bottom: 42%;   /* Adjust if needed */
     left: 50%;
-    transform: translateX(-50%);
-    width: 260px;  /* Adjust width to match button */
-    height: 70px;  /* Adjust height to match button */
+    top: 67%;              /* Adjusted to match your button */
+    transform: translate(-50%, -50%);
+    width: 280px;          /* Match your button width */
+    height: 75px;          /* Match your button height */
     cursor: pointer;
   }
+
+  /* Make responsive for smaller screens */
+  @media (max-width: 768px) {
+    .button-link {
+      width: 200px;
+      height: 60px;
+      top: 70%;
+    }
+  }
+
 </style>
 </head>
 
